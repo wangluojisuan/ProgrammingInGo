@@ -1,44 +1,15 @@
-Error	[MTM.dll] file not found.
-Error	[MTM_CS.dll] file not found.
-Error	[MC.dll] file not found.
-Error	[MC_CS.dll] file not found.
-Error	[PROCDB.dll] file not found.
-Error	[PROCDB_CS.dll] file not found.
-Error	[SecurityDLL.dll] file not found.
-Error	[CRC_CS.dll] file not found.
-Error	[AspuDll.dll] file not found.
-Error	[ConfigFileChecker.dll] file not found.
-Error	[ConfigFileChecker_CS.dll] file not found.
-Error	[ProcMonitor.exe] file not found.
-Error	[PipeDLL.dll] file not found.
-Error	[ProcMonitorCfg.ini] file not found.
-Error	[small.ico] file not found.
-Error	[Team.lib] file not found.
-Error	[TeamD.lib] file not found.
-Error	[CATS.exe] file not found.
-Error	[LATS.exe] file not found.
-Error	[SIM.exe] file not found.
-Oppos	[CUIT.exe] version not match.
-Error	[Playback.exe] file not found.
-Error	[CUIS.exe] file not found.
-Error	[CFP.exe] file not found.
-Error	[CIDriver.dll] file not found.
-Error	[CIDriver_CS.dll] file not found.
-Error	[ILDriver.dll] file not found.
-Error	[ATPATODriverDLL.dll] file not found.
-Error	[MsgTester.exe] file not found.
-Error	[TopoEdit.exe] file not found.
-Error	[TdeComputer.exe] file not found.
-Error	[LogClient.dll] file not found.
-Error	[EqpStatus.dll] file not found.
-Error	[memTool.DLL] file not found.
-Error	[ZKDLL.dll] file not found.
-Error	[Zookeeper.dll] file not found.
-Error	[ATPATODriver_CRRC.exe] file not found.
-Error	[AtsDb.dll] file not found.
-Error	[LogManageLib4DLL.dll] file not found.
+Oppos	[1 - 副本.xlsx] file not support.
+Oppos	[1.xlsx] file not support.
+Error	[CUIT.exe] version not match.
+Oppos	[FileDescription.go] file not support.
+Oppos	[FileInfo.go] file not support.
+Oppos	[excelize - 副本.exe] file not support.
+Oppos	[excelize - 副本.go] file not support.
+Oppos	[excelize.exe] file not support.
+Oppos	[excelize.go] file not support.
 Check	[log4net.dll] version match.
-Error	[CUIT.GlobalService.ShareLib.dll] file not found.
-Error	[Csr.ShareLib.LogManageLib.dll] file not found.
+Oppos	[path.go] file not support.
+Oppos	[test.xlsx] file not support.
+Oppos	[xlsx.go] file not support.
 
-结果：版本匹配【1】，版本差异【1】，文件缺失【40】
+结果：版本匹配【1】，版本差异【1】，类型不支持【11】

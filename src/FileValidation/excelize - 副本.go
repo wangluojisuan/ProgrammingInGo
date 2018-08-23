@@ -29,22 +29,20 @@ func GetAllSameLevelDirectory() ([]string, error) {
 func GetFileList() []string {
 	fileList := make([]string, 0, 30)
 	
-	err := filepath.Walk(".", func(path string, info os.FileInfo, err error) error {
+	err = filepath.Walk(".", func(path string, info os.FileInfo, err error) error {
 		if !info.IsDir() {
 			fileList = append(fileList, info.Name())
 		}
 		return nil
 	})
 	
-	if err != nil {
-		return []string{}
-	}
-	
 	return fileList
 }
 
 // 获取文件版本
-func GetFileVersion(path string) (version string, err error) {
+func (f FileInfo)GetFileVersion() (version string, err error) {
+	path := f.FileName
+	
 	size := w32.GetFileVersionInfoSize(path)
     if size <= 0 {
         err = errors.New("GetFileVersionInfoSize failed")
@@ -154,38 +152,37 @@ func main() {
 	}
 	
 	fileList := GetFileList()
-	notSupport, notMatch, match := 0, 0, 0
+	notFound, notMatch, match := 0, 0, 0
 	for _, file := range fileList {
-		if strings.EqualFold(file, XLSX_FILENAME) || strings.EqualFold(file, RESLUT_FILENAME) {
+		
+	}
+	for _, fileInfo := range fileSlice {
+		//if strings.HasPrefix(fileInfo.FileName, "LogC") {
+		//	println(index, "\t", fileInfo.FileVersion)
+		//}
+		//fmt.Println(index, "\t", fileInfo.FileVersion, "\t", fileInfo.FileName)
+		version, err := fileInfo.GetFileVersion();
+		if err!=nil {
+			info := "Error\t["+fileInfo.FileName+"] file not found."
+			fmt.Println(info)
+			WriteResult(info)
+			notFound++
 			continue
 		}
 		
-		version, err := GetFileVersion(file);
-		if err!=nil {
-			info := "Oppos\t["+file+"] file not support."
+		if strings.EqualFold(fileInfo.FileVersion, version) {
+			info := "Check\t["+fileInfo.FileName+"] version match."
 			fmt.Println(info)
 			WriteResult(info)
-			notSupport++
-			continue
+			match++
+		} else {
+			info := "Oppos\t["+fileInfo.FileName+"] version not match."
+			fmt.Println(info)
+			WriteResult(info)
+			notMatch++
 		}
-		for _, fileInfo := range fileSlice {
-			if !strings.EqualFold(fileInfo.FileName, file) {
-				continue
-			}
-			if strings.EqualFold(fileInfo.FileVersion, version) {
-				info := "Check\t["+file+"] version match."
-				fmt.Println(info)
-				WriteResult(info)
-				match++
-			} else {
-				info := "Error\t["+file+"] version not match."
-				fmt.Println(info)
-				WriteResult(info)
-				notMatch++
-			}
-		}		
-	}	
+	}
 	
-	var strResult string = "\r\n结果：版本匹配【"+strconv.Itoa(match)+"】，版本差异【"+strconv.Itoa(notMatch)+"】，类型不支持【"+strconv.Itoa(notSupport)+"】"
+	var strResult string = "\r\n结果：版本匹配【"+strconv.Itoa(match)+"】，版本差异【"+strconv.Itoa(notMatch)+"】，文件缺失【"+strconv.Itoa(notFound)+"】"
 	WriteResult(strResult)
 }
