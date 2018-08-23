@@ -6,7 +6,8 @@ import (
 )
 
 func main() {
-    const path = `cmd.exe`
+    //const path = `CUIT.exe`
+	const path = `log4net.dll`
 
     size := w32.GetFileVersionInfoSize(path)
     if size <= 0 {

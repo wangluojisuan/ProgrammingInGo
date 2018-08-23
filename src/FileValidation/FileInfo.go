@@ -72,6 +72,7 @@ func (f *fileInfo) GetExeVersion() (err error) {
     }
 
     machine := f.unpack([]byte{buffer[4], buffer[5]})
+	fmt.Println(machine)
     if machine != MACHINE {
         log.Fatalln("machine 读取错误.", f.FilePath)
     }
